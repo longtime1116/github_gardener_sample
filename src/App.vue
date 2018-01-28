@@ -29,8 +29,16 @@ export default {
       this.msg = '';
     },
     getGarden() {
-      // crawl the page and get SVG
       console.log('hoge');
+      fetch(`https://github.com/users/${this.msg}/contributions`, {
+        mode: 'no-cors',
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(() => {
+          alert('failed');
+        });
     },
   },
 };
