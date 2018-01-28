@@ -8,7 +8,7 @@
       no text
     </p>
     <input type="text" v-model="msg" >
-    <button @click="clear()">clear</button>
+    <button @click="getGarden()">get the garden!</button>
   </div>
 </template>
 
@@ -21,12 +21,16 @@ export default {
   },
   data() {
     return {
-      msg: 'Hello World!!!',
+      msg: 'longtime1116',
     };
   },
   methods: {
     clear() {
       this.msg = '';
+    },
+    getGarden() {
+      // crawl the page and get SVG
+      console.log('hoge');
     },
   },
 };
