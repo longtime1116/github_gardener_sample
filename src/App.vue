@@ -30,14 +30,12 @@ export default {
     },
     getGarden() {
       console.log('hoge');
-      fetch(`https://github.com/users/${this.msg}/contributions`, {
-        mode: 'no-cors',
-      })
+      fetch(`http://localhost:8081/getGarden.php?url=https://github.com/users/${this.msg}/contributions`)
         .then((response) => {
           console.log(response);
-        })
-        .catch(() => {
-          alert('failed');
+          return response.body;
+        }).then((data) => {
+          console.log(data);
         });
     },
   },
