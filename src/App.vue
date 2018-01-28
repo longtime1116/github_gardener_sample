@@ -8,12 +8,11 @@
       no text
     </p>
     <input type="text" v-model="msg" >
-    <button @click="getGarden()">show your garden</button>
+    <button @click="clear()">clear</button>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 import myheader from './components/myheader';
 
 export default {
@@ -22,17 +21,12 @@ export default {
   },
   data() {
     return {
-      msg: 'longtime1116',
+      msg: 'Hello World!!!',
     };
   },
   methods: {
     clear() {
       this.msg = '';
-    },
-    getGarden() {
-      axios.get(
-        `https://github.com/users/${this.msg}/contributions`,
-      ).then((response) => { this.result = response.data; });
     },
   },
 };
