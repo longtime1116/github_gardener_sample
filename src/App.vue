@@ -29,24 +29,15 @@ export default {
       this.msg = '';
     },
     getGarden() {
-      fetch(`http://localhost:8081/getGarden.php?url=https://github.com/users/${this.msg}/contributions`)
-        .then((response) => {
-          console.log(response);
-          // let reader = response.body.getReader();
-          // let chunk = 0;
-
-          // reader.read().then(function processResult(result) {
-          //   if (result.done) {
-          //     console.log("complete")
-          //     return "Fetch complete"
-          //   }
-          //   console.log(result.value);
-          //   return reader.read().then(processResult)
-          // })
-          return response.body;
-        }).then((data) => {
-          console.log(data);
-        });
+      const XHR = new XMLHttpRequest();
+      const query = `http://localhost:8081/getGarden.php?url=https://github.com/users/${this.msg}/contributions`;
+      XHR.open('GET', query, true);
+      XHR.onreadystatechange = (() => {
+        if (XHR.status === 200) {
+          console.log(XHR.responseText);
+        }
+      });
+      XHR.send(null);
     },
   },
 };
