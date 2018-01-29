@@ -2,7 +2,9 @@
   <div>
     <myheader></myheader>
     <p v-if="msg.length > 0">
-    {{msg}}
+      {{msg}}
+      <br/>
+      <span v-html="svg"></span>
     </p>
     <p v-else>
       no text
@@ -22,19 +24,17 @@ export default {
   data() {
     return {
       msg: 'longtime1116',
+      svg: '',
     };
   },
   methods: {
-    clear() {
-      this.msg = '';
-    },
     getGarden() {
       const XHR = new XMLHttpRequest();
       const query = `http://localhost:8081/getGarden.php?url=https://github.com/users/${this.msg}/contributions`;
       XHR.open('GET', query, true);
       XHR.onreadystatechange = (() => {
         if (XHR.status === 200) {
-          console.log(XHR.responseText);
+          this.svg = XHR.responseText;
         }
       });
       XHR.send(null);
