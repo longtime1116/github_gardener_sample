@@ -27,7 +27,7 @@ export default {
   methods: {
     getGarden() {
       const XHR = new XMLHttpRequest();
-      const query = `http://localhost:8081/getGarden.php?url=https://github.com/users/${this.msg}/contributions`;
+      const query = `http://localhost:8081/getGarden.php?username=${this.msg}`;
       XHR.open('GET', query, true);
       XHR.onreadystatechange = (() => {
         if (XHR.status === 200) {
