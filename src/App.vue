@@ -1,16 +1,13 @@
 <template>
   <div>
     <myheader></myheader>
-    <p v-if="msg.length > 0">
-      {{msg}}
+    <input type="text" v-model="msg" >
+    <button @click="getGarden()">get the garden!</button>
+    <p v-if="msg.length > 0 && svg.length > 0">
+      user: {{msg}}
       <br/>
       <span v-html="svg"></span>
     </p>
-    <p v-else>
-      no text
-    </p>
-    <input type="text" v-model="msg" >
-    <button @click="getGarden()">get the garden!</button>
   </div>
 </template>
 
