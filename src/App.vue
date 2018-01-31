@@ -1,10 +1,10 @@
 <template>
   <div>
     <myheader></myheader>
-    <input type="text" v-model="msg" >
+    <input type="text" v-model="username" >
     <button @click="getGarden()">get the garden!</button>
-    <p v-if="msg.length > 0 && svg.length > 0">
-      user: {{msg}}
+    <p v-if="username.length > 0 && svg.length > 0">
+      user: {{username}}
       <br/>
       <span v-html="svg"></span>
     </p>
@@ -20,14 +20,14 @@ export default {
   },
   data() {
     return {
-      msg: 'longtime1116',
+      username: 'longtime1116',
       svg: '',
     };
   },
   methods: {
     getGarden() {
       const XHR = new XMLHttpRequest();
-      const query = `http://localhost:8081/getGarden.php?username=${this.msg}`;
+      const query = `http://localhost:8081/getGarden.php?username=${this.username}`;
       XHR.open('GET', query, true);
       XHR.onreadystatechange = (() => {
         if (XHR.status === 200) {
